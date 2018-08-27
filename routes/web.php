@@ -16,6 +16,8 @@
 });*/
 
 Route::get('/', "Main\IndexController@index");
+Route::get('/article_list', "Main\IndexController@article_list");
+Route::get('/detail/{id?}', "Main\IndexController@article_detail");
 
 Route::get('/main', function () {
     return view('index');

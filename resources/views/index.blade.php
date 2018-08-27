@@ -1,6 +1,6 @@
 @extends('common.base')
 @section('content')    
-     {{-- 这里是Blade注释 --}}    
+     {{-- 这里是Blade注释 --}}  
      <div class="container-fluid">
         <div class="col-md-9">
             <div class="list-group">
@@ -9,92 +9,36 @@
                         My Life, Like Sun!
                     </h4>
                 </a>
+
+                @foreach ($article as $vs)
+                @if (!empty($vs))
                 <div class="list-group-item item_article">
                     <div class="row">
-                        <a href="#" align="center"><h3>这是标题部分</h3></a>
+                        <a href="{{url('detail', ['id' => $vs->id])}}" align="center"><h3>{{$vs->title}}</h3></a>
                         <p>
-                            <small>发布时间: 2016-6-6</small>
-                            <small>点击量: <span class="badge">20</span></small>
+                            <small>发布时间: {{explode(' ', $vs->created_at)[0]}}</small>
+                            <small>点击量: <span class="badge">{{$vs->clicks}}</span></small>
                         </p>
                         <p class="div_center line-clamp text-muted module list-group-item-text div_article_content">
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
+                            <a href="{{url('detail', ['id' => $vs->id])}}">
+                                {{$vs->content}}
+                            </a>
                         </p>
                         <p>
-                            <span class="badge">关键字</span>
-                            <span class="badge">关键字</span>
-                            <span class="badge">关键字</span>
+                        @foreach ($vs->theme_name as $v)
+                            <span class="badge">{{$v}}</span>
+                        @endforeach
                         </p>
                     </div>
                 </div>
-                <div class="list-group-item item_article">
-                    <div class="row">
-                        <a href="#" align="center"><h3>这是标题部分</h3></a>
-                        <p>
-                            <small>发布时间: 2016-6-6</small>
-                            <small>点击量: <span class="badge">20</span></small>
-                        </p>
-                        <p class="line-clamp text-muted module list-group-item-text div_article_content">
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                        </p>
-                        <p>
-                            <span class="badge">关键字</span>
-                            <span class="badge">关键字</span>
-                            <span class="badge">关键字</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="list-group-item item_article">
-                    <div class="row">
-                        <a href="#" align="center"><h3>这是标题部分</h3></a>
-                        <p>
-                            <small>发布时间: 2016-6-6</small>
-                            <small>点击量: <span class="badge">20</span></small>
-                        </p>
-                        <p class="line-clamp text-muted module list-group-item-text div_article_content">
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                            所有设计源于生活，框终点在于分层、层与层之间如何交流。
-                        </p>
-                        <p>
-                            <span class="badge">关键字</span>
-                            <span class="badge">关键字</span>
-                            <span class="badge">关键字</span>
-                        </p>
-                    </div>
-                </div>
+                @endif
+                @endforeach
+
                 <div style="border: 1px dashed #ddd;"></div>
 
                 <!-- 分页 -->
                 <div class="text-center">
-                    <ul class="pagination">
-                    <!-- 向前符号 -->
-                    <li><a href="#">«</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
+                    {{$article->links()}}
                 </div>
             </div>
         </div>
@@ -102,16 +46,18 @@
         <div class="col-md-3" style="padding-bottom: 50px;">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    推荐新闻
+                    浏览最多的文章
                 </div>
+                @foreach ($clicks as $vs)
                 <div class="panel-body">
                     <strong class="panel-title">
-                    <a href="#">这里是新闻列表</a>
+                    <a href="{{url('detail', ['id' => $vs->id])}}">{{$vs->title}}</a>
                     </strong>
-                    <p>
-                        这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要这里是新闻内容摘要
+                    <p class="div_center line-clamp text-muted module list-group-item-text div_article_content">
+                        {{$vs->content}}
                     </p>
                 </div>
+                @endforeach
             </div>
 
             <!-- 热点新闻侧边栏 -->

@@ -8,10 +8,21 @@
         </button>
         <a class="navbar-brand" href="#">This blog for Shiroi</a>
     </div>
+    <?php 
+        $model = DB::table('model')->where('is_open', '=', 1)->get();
+        $url = URL::full();
+        $p_url = parse_url($url);
+        if (!isset($p_url['path'])) $p_url['path'] = '/';
+    ?>
     <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">homepage</a></li>
-            <li><a href="#">article</a></li>
+            @foreach ($model as $vs)
+                @if ($vs->model_controller == $p_url['path'])
+                    <li class="active"><a href="{{$vs->model_controller}}">{{$vs->model_name}}</a></li>
+                @else
+                    <li><a href="{{$vs->model_controller}}">{{$vs->model_name}}</a></li>
+                @endif
+            @endforeach
             <!-- <li><a href="#">login</a></li>
             <li><a href="#">register</a></li> -->
             <!-- <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉菜单 <b class="caret"></b></a>
