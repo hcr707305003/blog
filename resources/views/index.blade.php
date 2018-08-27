@@ -14,16 +14,18 @@
                 @if (!empty($vs))
                 <div class="list-group-item item_article">
                     <div class="row">
-                        <a href="{{url('detail', ['id' => $vs->id])}}" align="center"><h3>{{$vs->title}}</h3></a>
+                        <strong class="panel-title">
+                            <a href="{{url('detail', ['id' => $vs->id])}}" align="center"><h3>{{$vs->title}}</h3></a>
+                        </strong>
                         <p>
                             <small>发布时间: {{explode(' ', $vs->created_at)[0]}}</small>
                             <small>点击量: <span class="badge">{{$vs->clicks}}</span></small>
                         </p>
-                        <p class="div_center line-clamp text-muted module list-group-item-text div_article_content">
-                            <a href="{{url('detail', ['id' => $vs->id])}}">
+                        <a href="{{url('detail', ['id' => $vs->id])}}" class="div_center line-clamp text-muted module list-group-item-text div_article_content">
+                            <p>
                                 {{$vs->content}}
-                            </a>
-                        </p>
+                            </p>
+                        </a>
                         <p>
                         @foreach ($vs->theme_name as $v)
                             <span class="badge">{{$v}}</span>
@@ -51,11 +53,13 @@
                 @foreach ($clicks as $vs)
                 <div class="panel-body">
                     <strong class="panel-title">
-                    <a href="{{url('detail', ['id' => $vs->id])}}">{{$vs->title}}</a>
+                        <a href="{{url('detail', ['id' => $vs->id])}}">{{$vs->title}}</a>
                     </strong>
-                    <p class="div_center line-clamp text-muted module list-group-item-text div_article_content">
-                        {{$vs->content}}
-                    </p>
+                    <a href="{{url('detail', ['id' => $vs->id])}}" class="div_center line-clamp text-muted module list-group-item-text div_article_content">
+                        <p>
+                            {{$vs->content}}
+                        </p>
+                    </a>
                 </div>
                 @endforeach
             </div>

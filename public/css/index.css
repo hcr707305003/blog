@@ -1,7 +1,20 @@
+a:hover{
+	text-decoration:none;
+}
+.panel-title{
+	font-size: 20px;
+	color: #777777;
+}
+.panel-title:hover{
+	color: #aaaaaa;
+}
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;  
+}
+.line-clamp:hover{
+	color: #444444;
 }
 .module {
   margin: 0 0 1em 0;
