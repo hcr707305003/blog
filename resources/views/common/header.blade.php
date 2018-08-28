@@ -18,9 +18,9 @@
         <ul class="nav navbar-nav">
             @foreach ($model as $vs)
                 @if ($vs->model_controller == $p_url['path'])
-                    <li class="active"><a href="{{$vs->model_controller}}">{{$vs->model_name}}</a></li>
+                    <li class="active"><a href="{{url($vs->model_controller)}}">{{$vs->model_name}}</a></li>
                 @else
-                    <li><a href="{{$vs->model_controller}}">{{$vs->model_name}}</a></li>
+                    <li><a href="{{url($vs->model_controller)}}">{{$vs->model_name}}</a></li>
                 @endif
             @endforeach
             <!-- <li><a href="#">login</a></li>

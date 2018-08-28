@@ -6,7 +6,7 @@
             <div class="list-group">
                 <a href="#" class="list-group-item active item_article_first">
                     <h4 class="list-group-item-heading">
-                        My Life, Like Sun!
+                        Share with friends!
                     </h4>
                 </a>
 

@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="{{ URL::asset('css/fontCss.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/music.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/index.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/music.js') }}"></script>
     <script type="text/javascript">
@@ -21,7 +23,7 @@
                 left:'140px',
                 // top:'50px',
                 // bottom:'-28px',
-                bottom:'50px',
+                bottom:'20px',
                 musicChanged:function(ret){
                     // console.log(ret);return false;
                     var data = ret.data;
@@ -78,10 +80,14 @@
     </script>
 </head>
 <body>
+    <ul class="contextmenu">
+        <li><a href="{{url('/')}}">首页</a></li>
+        <li><a href="{{url('/article_list')}}">文章</a></li>
+    </ul>
     <div class="music-bg" id="music-bg">
         <div class="music-mask"></div>
     </div>
-    <div class="waifu" style="padding-bottom: 100px;">
+    <div class="waifu" style="padding-bottom: 50px;">
         <div class="waifu-tips"></div>
         <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
         <div class="waifu-tool">

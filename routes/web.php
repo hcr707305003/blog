@@ -11,14 +11,14 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
+//前台
 Route::get('/', "Main\IndexController@index");
 Route::get('/article_list', "Main\IndexController@article_list");
 Route::get('/detail/{id?}', "Main\IndexController@article_detail");
 
-Route::get('/main', function () {
-    return view('index');
-});
+//后台
+Route::get('/back/login', "Main\BackController@login");
+Route::get('/back/home', "Main\BackController@back_page");
+/*Route::get('/login', function () {
+    return view('back/login');
+});*/
