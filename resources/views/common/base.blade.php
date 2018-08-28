@@ -16,6 +16,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/index.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/music.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/console.js') }}"></script>
     <script type="text/javascript">
         window.onload = function(){
             MC.music({
