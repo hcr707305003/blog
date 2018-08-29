@@ -38,7 +38,7 @@ class LoginController extends Controller
 				if (isset($record)) {
 					Cache::set('user', $array, 10080);
 				} else {
-					Cache::set('user', $array, 1440);
+					Cache::set('user', $array, 60);
 				}
 				$this->access();
 				return redirect('/back/home');

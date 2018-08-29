@@ -20,6 +20,7 @@ Route::get('/detail/{id?}', "Main\IndexController@article_detail");
 Route::get('/back/login', "Main\LoginController@login")->name('back/login');
 Route::post('/back/handle_login', "Main\LoginController@handle_login");
 Route::get('/back/home', "Main\BackController@back_page");
+Route::get('forget', "Main\BackController@del_cache");
 /*Route::get('/login', function () {
     return view('back/login');
 });*/

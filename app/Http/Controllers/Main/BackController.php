@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class BackController extends LoginController
 {
@@ -17,5 +18,11 @@ class BackController extends LoginController
     public function back_page()
     {
     	return view('back/index');
+    }
+
+    //删除cache
+    public function del_cache()
+    {
+    	Cache::forget('user');
     }
 }
