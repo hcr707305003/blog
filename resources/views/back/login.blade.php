@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('back/css/login.css') }}">
+    <script src="{{URL::asset('back/js/console.js')}}"></script>
     <title>示例登陆页</title>
     <style>
         #win10-login {
@@ -16,101 +19,47 @@
             top: 0;
             left: 0;
         }
-
-        #win10-login-box {
-            width: 300px;
-            overflow: hidden;
-            margin: 0 auto;
-        }
-
-        .win10-login-box-square {
-            width: 105px;
-            margin: 0 auto;
-            border-radius: 50%;
-            background-color: darkgray;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .win10-login-box-square::after {
-            content: "";
-            display: block;
-            padding-bottom: 100%;
-        }
-
-        .win10-login-box-square .content {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        input {
-            width: 90%;
-            display: block;
-            border: 0;
-            margin: 0 auto;
-            line-height: 36px;
-            font-size: 20px;
-            padding: 0 1em;
-            border-radius: 5px;
-            margin-bottom: 11px;
-        }
-
-        .login-username, .login-password {
-            width: 91%;
-            font-size: 13px;
-            color: #999;
-        }
-
-        .login-password {
-            width: calc(91% - 54px);
-            -webkit-border-radius: 2px 0 0 2px;
-            -moz-border-radius: 2px 0 0 2px;
-            border-radius: 5px 0 0 5px;
-            margin: 0px;
-            float: left;
-        }
-
-        .login-submit {
-            margin: 0px;
-            float: left;
-            -webkit-border-radius: 0 5px 5px 0;
-            -moz-border-radius: 0 5px 5px 0;
-            border-radius: 0 5px 5px 0;
-            background-color: #009688;
-            width: 54px;
-            display: inline-block;
-            height: 36px;
-            line-height: 36px;
-            padding: 0 auto;
-            color: #fff;
-            white-space: nowrap;
-            text-align: center;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            opacity: .9;
-            filter: alpha(opacity=90);
-
-        }
     </style>
 </head>
 <body>
 <div id="win10-login">
-    <div style="height: 10%;min-height: 120px"></div>
-    <div id="win10-login-box">
-        <div class="win10-login-box-square">
-            <img src="{{URL::asset('back/img/avatar.jpg')}}" class="content"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5">
+                <form class="form-horizontal" target="_self" method="post" action="{{url('/back/handle_login')}}">
+                    <span class="heading">用户登录</span>
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" id="inputEmail3" placeholder="用户名">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="密　码">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <div class="main-checkbox">
+                            <input type="checkbox" name="record" value="my" id="checkbox1" name="check"/>
+                            <label for="checkbox1"></label>
+                        </div>
+                        <span class="text">Remember me</span>
+                        <button type="submit" class="btn btn-default">登录</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <p style="font-size: 24px;color: white;text-align: center">游客</p>
-        <form target="_self" method="post" action="#">
-            <!--用户名-->
-            <input type="text" placeholder="请输入登录名" class="login-username">
-            <!--密码-->
-            <input type="password" placeholder="请输入密码" class="login-password">
-            <!--登陆按钮-->
-            <input type="submit"  value="登录" id="btn-login" class="login-submit"/>
-        </form>
+        <div class="form-group text-center" style="opacity: 0.8;">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="display: block;">{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
     </div>
 </div>
 </body>

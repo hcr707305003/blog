@@ -9,6 +9,14 @@ use DB;
 class IndexController extends Controller
 {
 	public $page = 4;
+
+    //跳转
+    public function __construct()
+    {
+        parent::get_access_user();
+    }
+
+
     public function  article_list()
     {
     	//获取分页数据

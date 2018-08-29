@@ -7,6 +7,7 @@
     <title>win10-ui</title>
     <!-- <link rel='Shortcut Icon' type='image/x-icon' href='./img/windows.ico'> -->
     <link rel='Shortcut Icon' type='image/x-icon' href="{{URL::asset('back/img/windows.ico')}}">
+    <script src="{{URL::asset('back/js/console.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('back/js/jquery-2.2.4.min.js')}}"></script>
     <link href="{{URL::asset('back/css/animate.css')}}" rel="stylesheet">
     <script type="text/javascript" src="{{URL::asset('back/component/layer-v3.0.3/layer/layer.js')}}"></script>

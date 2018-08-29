@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Main;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BackController extends Controller
+class BackController extends LoginController
 {
-    // 登录页
-    public function login()
-    {
-    	return view('back/login');
-    }
+	//判断是否登录了
+	public function __construct()
+	{
+		parent::is_login();
+	}
 
     //后台首页
     public function back_page()
