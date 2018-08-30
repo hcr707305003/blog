@@ -21,6 +21,10 @@ Route::get('/back/login', "Main\LoginController@login")->name('back/login');
 Route::post('/back/handle_login', "Main\LoginController@handle_login");
 Route::get('/back/home', "Main\BackController@back_page");
 Route::get('forget', "Main\BackController@del_cache");
+Route::get('list', "Main\BackController@user_list")->name('list');
+Route::get('/del/user/{id?}', "Main\BackController@del_user");
+Route::any('/edit/user/{id?}', "Main\BackController@edit_user");
+Route::post('/edit/handle/user', "Main\BackController@edit_handle_user");
 /*Route::get('/login', function () {
     return view('back/login');
 });*/

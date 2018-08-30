@@ -23,6 +23,7 @@ class LoginController extends Controller
 		$username = $request->input('username');
 		$password = $request->input('password');
 		$record = $request->input('record');
+		// echo password_hash("707305003", PASSWORD_DEFAULT);die;
 		//判断是否存在该用户名
 		$user_data = DB::table('users')->where([
 			'name' => $username
@@ -35,6 +36,7 @@ class LoginController extends Controller
 				$array['name'] = $user_data->name;
 				$array['email'] = $user_data->email;
 				$array['token'] = $user_data->remember_token;
+				$array['is_manager'] = $user_data->is_manager;
 				if (isset($record)) {
 					Cache::set('user', $array, 10080);
 				} else {

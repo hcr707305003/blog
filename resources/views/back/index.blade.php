@@ -84,6 +84,10 @@
                 <img class="icon" src="{{URL::asset('back/img/icon/download.png')}}"/>
                 <div class="title">快速获取</div>
             </div>
+            <div class="shortcut" onclick='Win10.openUrl("{{url('list')}}","<i class=\"fa fa-user icon black-green\"></i>用户列表")'>
+                <i class="fa fa-user icon black-green"></i>
+                <div class="title">用户列表</div>
+            </div>
             <div class="shortcut" ondblclick='Win10.openUrl("{{url('back/login')}}","<i class=\"fa fa-user icon black-green\"></i>示例登录页")'>
                 <i class="fa fa-user icon black-green"></i>
                 <div class="title">示例登录页（双击）</div>
