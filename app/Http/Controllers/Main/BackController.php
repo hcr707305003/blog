@@ -91,9 +91,11 @@ class BackController extends LoginController
     		return redirect("list"); 
     	} else {
     		$array = array();
-    		if (trim($password) == trim($more_password)) {
-    			$array['password'] = password_hash($password, PASSWORD_DEFAULT);
-    		}
+            if (!empty(trim($password))) {
+        		if (trim($password) == trim($more_password)) {
+        			$array['password'] = password_hash($password, PASSWORD_DEFAULT);
+        		}
+            }
     		if (trim($name)) {
     			$array['name'] = $name;
     		}
@@ -101,7 +103,7 @@ class BackController extends LoginController
     			$array['email'] = $email;
     		}
     		//更新数据
-    		$update_success = DB::table('users')->where('id', $id)->update($array);
+    		DB::table('users')->where('id', $id)->update($array);
 
 			return Redirect::to('list')->with('status', '修改成功');
     	}
