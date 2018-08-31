@@ -43,7 +43,7 @@
                 })
             }, 1500);
 
-            setTimeout(function () {
+            /*setTimeout(function () {
                 layer.open({
                     type: 2,
                     title: '最新资讯',
@@ -52,7 +52,7 @@
                     offset: 'rt',
                     content: '//win10ui.yuri2.cn/src/broadcast.html'
                 })
-            },2000)
+            },2000)*/
         });
     </script>
 </head>
@@ -87,6 +87,18 @@
             <div class="shortcut" onclick='Win10.openUrl("{{url('list')}}","<i class=\"fa fa-user icon black-green\"></i>用户列表")'>
                 <i class="fa fa-user icon black-green"></i>
                 <div class="title">用户列表</div>
+            </div>
+            <div class="shortcut" onclick="Win10.openUrl('{{url('add/user')}}','<img class=\'icon\' src=\'{{URL::asset('back/img/icon/adduser.png')}}\'/>添加用户')">
+                <img class="icon" src="{{URL::asset('back/img/icon/adduser.png')}}"/>
+                <div class="title">添加用户</div>
+            </div>
+            <div class="shortcut" onclick="Win10.openUrl('{{url('back/article_list')}}','<img class=\'icon\' src=\'./img/icon/doc.png\'/>文章列表')">
+                <img class="icon" src="{{URL::asset('back/img/icon/doc.png')}}"/>
+                <div class="title">文章列表</div>
+            </div>
+            <div class="shortcut" onclick="Win10.openUrl('{{url('add/article')}}','<img class=\'icon\' src=\'./img/icon/addarticle.png\'/>添加文章')">
+                <img class="icon" src="{{URL::asset('back/img/icon/addarticle.png')}}"/>
+                <div class="title">添加文章</div>
             </div>
             <div class="shortcut" ondblclick='Win10.openUrl("{{url('back/login')}}","<i class=\"fa fa-user icon black-green\"></i>示例登录页")'>
                 <i class="fa fa-user icon black-green"></i>

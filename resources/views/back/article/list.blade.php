@@ -2,10 +2,11 @@
 <html lang="en"> 
 <head> 
     <meta charset="utf-8"> 
-    <title>用户列表</title> 
+    <title>文章列表</title> 
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">  
     <link rel="stylesheet" href="{{ URL::asset('back/css/sweetalert.css') }}">  
+    <link rel="stylesheet" href="{{ URL::asset('css/index.css') }}">  
 </head>
 <body>
     @if (session('status'))
@@ -20,33 +21,29 @@
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr class="bg-primary">
-                        <th>User-ID</th>
-                        <th>Name</th>
-                        <th>E-Mail</th>
-                        <th>Job</th>
+                        <th>Article-ID</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Create-user</th>
+                        <th>Create-date</th>
                         <th>handle</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($user_list) > 0)
-                    @foreach ($user_list as $v)
+                    @if (count($article_list) > 0)
+                    @foreach ($article_list as $v)
                     <tr>
                         <td>{{$v->id}}</td>
-                        <td>{{$v->name}} </td>
-                        <td>{{$v->email}}</td>
-                        @if ($v->is_manager == 1)
-                        <td>管理员</td>
-                        @else
-                        <td>普通用户</td>
-                        @endif
+                        <td>{{$v->title}} </td>
+                        <td><p class="line-clamp text-muted module list-group-item-text div_article_content">{{$v->content}}</p></td>
+                        <td>{{$v->uid}}</td>
+                        <td>{{$v->created_at}}</td>
                         <td>
-                            @if ($v->id == $user['id'])
-                            <a href="{{url('edit/user', ['id' => $v->id])}}" class="btn btn-success btn-sm">edit</a>
+                            @if ($v->uid == $user['id'] || $user['id'] == 1)
+                            <a href="{{url('edit/article', ['id' => $v->id])}}" class="btn btn-success btn-sm">edit</a>
                             @endif
-                            @if ($v->id != $user['id'])
-                            @if ($user['is_manager'] == 1)
+                            @if ($user['is_manager'] || $v->uid == $user['id'])
                             <a type="button" class="del btn btn-danger btn-sm">delete</a>
-                            @endif
                             @endif
                         </td>
                     </tr>
@@ -55,7 +52,7 @@
                 </tbody>
             </table>
             <nav style="text-align: center">
-                {{ $user_list->links() }}
+                {{ $article_list->links() }}
             </nav>
         </div>
     </div>
@@ -86,11 +83,11 @@
                                     data:{
                                         'id':id,
                                     },
-                                    url:"del/user",
+                                    url:"/del/article/",
                                     // data:{id:ids},
                                     dataType: "json",
                                     success:function(ss){
-                                        // console.log(ss);
+                                        console.log(ss);
                                         if (ss.code == 200) {
                                             $(_This).parent().parent().remove();
                                             swal({title:"删除成功！",
